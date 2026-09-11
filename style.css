@@ -1,12 +1,13 @@
+
 /* =========================
    1. Variables
    ========================= */
 
 :root {
-    --brand-color: #6ba0af;
-    --dark-ink: #ffffff;
-    --muted-grey: #bcd9ff;
-    --light-background: #2b2b2b;
+    --brand-color: #6BA0AF;
+    --dark-ink: #FFFFFF;
+    --muted-grey: #BCD9FF;
+    --light-background: #2B2B2B;
     --card-background: #292929;
 }
 
@@ -50,6 +51,11 @@ p {
 header {
     background-color: var(--brand-color);
     padding: 20px;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 section p {
@@ -76,11 +82,11 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
 
-nav li {
-    display: inline-block;
-    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 nav a {
@@ -93,8 +99,9 @@ nav a:hover {
 }
 
 main {
-    padding: 30px 20px;
+    width: 100%;
     max-width: 1000px;
+    padding: 30px 20px;
     margin: 0 auto;
 }
 
@@ -124,15 +131,22 @@ footer p {
    ========================= */
 
 
-/* Product Cards */
+/* Place Cards */
+
+.place-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
 
 .place-card {
-    font-family: Roboto, Arial, sans-serif;
+    flex: 1 1 240px;
+    font-family: Arial, sans-serif;
     background-color: var(--card-background);
     border: 1px solid var(--muted-grey);
     border-radius: 10px;
     padding: 16px;
-    margin: 0 auto 20px;
+    width: 100%;
     max-width: 500px;
     text-align: center;
     border-left: 10px solid var(--brand-color);
@@ -146,7 +160,10 @@ footer p {
 
 .place-card img {
     display: block;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
+    border-radius: 6px;
 }
 
 .place-card a {
@@ -160,17 +177,21 @@ footer p {
 }
 
 
-/* Product Detail Images */
+/* Place Detail Images */
 
 main section img {
     display: block;
+    max-width: 100%;
+    height: auto;
     margin: 0 auto;
 }
 
 
-/* Product Detail Tables */
+/* Tables */
 
 table {
+    width: 100%;
+    max-width: 700px;
     margin: 0 auto;
     border-collapse: collapse;
     background-color: var(--light-background);
@@ -210,6 +231,7 @@ main p {
 /* Forms */
 
 form {
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
@@ -231,6 +253,7 @@ legend {
 input,
 select,
 textarea {
+    max-width: 100%;
     font-family: Arial, sans-serif;
     padding: 8px;
     border: 1px solid var(--muted-grey);
@@ -238,7 +261,6 @@ textarea {
 
 textarea {
     width: 100%;
-    box-sizing: border-box;
 }
 
 input:focus,
@@ -258,4 +280,55 @@ button {
 
 button:hover {
     background-color: var(--dark-ink);
+}
+
+
+/* =========================
+   5. Responsive Styles
+   ========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    .place-card {
+        padding: 14px;
+        border-left: 6px solid var(--brand-color);
+    }
+
+    .place-card h3 {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
 }
