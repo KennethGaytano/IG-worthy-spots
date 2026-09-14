@@ -1,3 +1,9 @@
+/* =========================
+   0. Fonts
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
 
 /* =========================
    1. Variables
@@ -9,6 +15,10 @@
     --muted-grey: #BCD9FF;
     --light-background: #2B2B2B;
     --card-background: #292929;
+    --background: #161515;
+
+    --font-heading: 'Poppins', Arial, sans-serif;
+    --font-body: 'Inter', Arial, sans-serif;
 }
 
 
@@ -22,8 +32,8 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-body);
+    line-height: 1.6;
     color: var(--dark-ink);
     background-color: var(--light-background);
 }
@@ -36,10 +46,31 @@ img {
 h1,
 h2,
 h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.3;
     color: var(--dark-ink);
 }
 
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--brand-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
 p {
+    font-family: var(--font-body);
     color: var(--dark-ink);
 }
 
@@ -50,8 +81,9 @@ p {
 
 header {
     background-color: var(--brand-color);
-    padding: 20px;
+    padding: 20px 30px;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     display: flex;
     justify-content: space-between;
@@ -63,6 +95,21 @@ section p {
     color: var(--dark-ink);
 }
 
+.background {
+    background-color: var(--background);
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.background img {
+    border-radius: 1em;
+}
+
+.about {
+    background-color: var(--background);
+    padding: 2em;
+    border-radius: 1em;
+}
 header h1 {
     text-align: center;
     margin: 10px 0 15px;
@@ -92,10 +139,14 @@ nav ul {
 nav a {
     color: var(--light-background);
     text-decoration: none;
+    padding: 4px 0;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
     color: var(--muted-grey);
+    text-decoration: underline;
 }
 
 main {
@@ -116,11 +167,13 @@ main h2 {
 footer {
     background-color: var(--brand-color);
     color: var(--light-background);
-    padding: 20px;
+    border-top: 3px solid var(--muted-grey);
+    padding: 24px 20px;
     text-align: center;
 }
 
 footer p {
+    font-family: var(--font-body);
     color: var(--light-background);
     margin: 0;
 }
@@ -140,11 +193,14 @@ footer p {
   justify-content: center;
   align-items: stretch;
   gap: 24px;
+  background-color: var(--background);
+  padding: 40px;
+  border-radius: 1em;
 }
 
 .place-card {
     flex: 1 1 240px;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body);
     background-color: var(--card-background);
     border: 1px solid var(--muted-grey);
     border-radius: 10px;
@@ -156,6 +212,12 @@ footer p {
     display: flex;
     flex-direction: column;
 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.place-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
 .place-card h3 {
@@ -186,6 +248,7 @@ footer p {
     color: var(--brand-color);
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 .place-card a:hover {
@@ -211,11 +274,12 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
     background-color: var(--light-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 th,
 td {
-    padding: 10px 15px;
+    padding: 12px 15px;
     border: 1px solid var(--muted-grey);
     text-align: center;
 }
@@ -269,14 +333,19 @@ legend {
 input,
 select,
 textarea {
+    width: 100%;
     max-width: 100%;
-    font-family: Arial, sans-serif;
-    padding: 8px;
+    font-family: var(--font-body);
+    padding: 10px 12px;
     border: 1px solid var(--muted-grey);
+    border-radius: 6px;
+    background-color: #222;
+    color: var(--dark-ink);
 }
 
 textarea {
     width: 100%;
+    resize: vertical;
 }
 
 input:focus,
@@ -286,16 +355,29 @@ select:focus {
     outline-offset: 2px;
 }
 
+label {
+    color: var(--dark-ink);
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 4px 0 12px;
+}
+
 button {
     background-color: var(--brand-color);
     color: var(--light-background);
+    font-family: var(--font-body);
+    font-weight: 600;
     border: none;
-    padding: 10px 20px;
+    border-radius: 6px;
+    padding: 12px 24px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 button:hover {
     background-color: var(--dark-ink);
+    color: var(--brand-color);
+    transform: translateY(-2px);
 }
 
 
